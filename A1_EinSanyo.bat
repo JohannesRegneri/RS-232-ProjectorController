@@ -3,6 +3,8 @@ REM leerzeile
 MODE COM2 BAUD=19200 PARITY=N DATA=8 STOP=1 xon=off rts=off dtr=off
 echo C00>com2
 
+REM Codes http://www.qed-productions.com/downloads/sanyo/zm5000-command-codes.pdf
+
 pause
 REM C00 Ein  C1C Menü
 
