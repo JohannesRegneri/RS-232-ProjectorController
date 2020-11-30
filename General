@@ -1,0 +1,52 @@
+	Status: 				Projektor Standby 		PC Spannungsfrei
+Aktion:	Zeitschaltuhr	//						
+	Folge:	PC Bootet (Stromausfalleinstellung)
+	Folge:	PC: Auto Login
+	IDLE
+
+
+
+
+	Status: 				Projektor Standby 		PC IDLE
+Aktion: Win Aufgabenplanung: Uhrzeit: 
+Folge:	PC: "STARTbatch wird ausgeführt"
+____________________________________
+STARTbatch INHALT:
+	Option: 	Minimiert 
+	Sende: 	Lamp ON an Projektor
+	Warte: 	t=30 bzw Schwarzes Video
+	Starte: VLC
+	Option: Playlist, Vollbild, Bildschirm, Wiederholen, Vordergrund
+	Exit
+____________________________________
+
+
+
+
+
+	Status: 				Projektor Aktiv 		PC Video läuft
+Aktion: Win Aufgabenplanung: Uhrzeit: (oder DELAY der ersten, Abgestimmt auf Videolänge + Schwarze Bereiche)
+Folge:	PC: "ENDbatch wird ausgeführt"
+____________________________________
+ENDbatch INHALT:
+	Option: 	Minimiert 
+	Sende: 	Lamp OFF an Projektor
+	Warte: 	t=60
+	Abfrage: ?Status
+	KILL: VLC
+		shoutdown /s /t 180
+		pause
+		shoutdown /a
+	Exit
+____________________________________ 
+
+
+
+	Status: 				Projektor Standby		PC Heruntergefahren
+Aktion: Zeitschaltuhr	// ausreichend Puffer!
+	Folge:	PC: Spannungsfrei
+
+
+
+
+END Nächster Tag weiter
